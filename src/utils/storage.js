@@ -32,7 +32,7 @@ export const starterMovies = [
     rating: 8.1,
     description:
       "A writer encounters the owner of an aging European hotel between the wars and the concierge who became his mentor. Wes Anderson's most ornate and delightful confection.",
-    image: "https://image.tmdb.org/t/p/w500/nX5XotM9yprCKarRz4AZaW9Ngko.jpg",
+    image: "https://avatars.mds.yandex.net/i?id=b01b38f4a3534da4c5a45dac058f24a7f9678b6a-5219031-images-thumbs&n=13",
   },
   {
     id: "4",
@@ -50,7 +50,7 @@ export const starterMovies = [
     rating: 8.0,
     description:
       "Feature adaptation of Frank Herbert's science fiction novel about the son of a noble family entrusted with the protection of the most valuable asset in the galaxy. Denis Villeneuve's awe-inspiring space opera.",
-    image: "https://image.tmdb.org/t/p/w500/d5NXSklpcvzeBO6lIJFTgD0RCXT.jpg",
+    image: "https://avatars.mds.yandex.net/i?id=48c7051e51e9cda5c9d94809e17e66270a7f136d-10120629-images-thumbs&n=13",
   },
   {
     id: "6",
