@@ -1,10 +1,6 @@
-// pages/Movies.jsx
-// Displays all movies as a responsive grid of clickable cards
-
 import { useNavigate, Link } from "react-router-dom";
 
 export default function Movies({ movies }) {
-  // useNavigate lets us programmatically change routes
   const navigate = useNavigate();
 
   return (
@@ -21,7 +17,6 @@ export default function Movies({ movies }) {
       {/* ── Movie Grid ── */}
       <div className="movies-grid">
         {movies.length === 0 ? (
-          /* Empty state when no movies exist */
           <div className="empty-state">
             <span className="empty-icon">🎞</span>
             <h3>Your library is empty</h3>
@@ -31,7 +26,6 @@ export default function Movies({ movies }) {
             </Link>
           </div>
         ) : (
-          /* Map each movie to a card component */
           movies.map((movie, idx) => (
             <article
               key={movie.id}
@@ -49,7 +43,6 @@ export default function Movies({ movies }) {
                   src={movie.image}
                   alt={`${movie.title} poster`}
                   onError={(e) => {
-                    // Fallback gradient if image URL is broken
                     e.target.style.display = "none";
                   }}
                 />

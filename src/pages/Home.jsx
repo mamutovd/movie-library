@@ -1,9 +1,5 @@
-// pages/Home.jsx
-// Landing page with hero section and navigation cards
-
 import { Link } from "react-router-dom";
 
-// Navigation shortcuts displayed as clickable cards
 const navCards = [
   {
     to: "/movies",

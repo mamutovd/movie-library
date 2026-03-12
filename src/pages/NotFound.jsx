@@ -1,6 +1,3 @@
-// pages/NotFound.jsx
-// Rendered when no route matches the current URL
-
 import { Link } from "react-router-dom";
 
 export default function NotFound() {

@@ -1,12 +1,7 @@
-// pages/AddMovie.jsx
-// Form to add a new movie to the library.
-// Uses React controlled inputs (useState) and redirects after submit.
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { generateId } from "../utils/storage";
 
-// Initial empty form state – kept outside component to avoid re-creation on every render
 const INITIAL_FORM = {
   title: "",
   year: "",
@@ -16,24 +11,18 @@ const INITIAL_FORM = {
 };
 
 export default function AddMovie({ onAdd }) {
-  // Controlled form state – each key maps to a form field
   const [form, setForm] = useState(INITIAL_FORM);
 
-  // Validation error messages keyed by field name
   const [errors, setErrors] = useState({});
 
-  // useNavigate used to redirect to /movies after successful submission
   const navigate = useNavigate();
 
-  // Generic change handler – updates any field by name
   function handleChange(e) {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
-    // Clear the error for this field as the user types
     if (errors[name]) setErrors((prev) => ({ ...prev, [name]: "" }));
   }
 
-  // Simple client-side validation
   function validate() {
     const next = {};
     if (!form.title.trim())           next.title = "Title is required";
@@ -47,9 +36,7 @@ export default function AddMovie({ onAdd }) {
     return next;
   }
 
-  // Form submission handler
   function handleSubmit(e) {
-    // Prevent the default browser form submission / page reload
     e.preventDefault();
 
     const validationErrors = validate();
@@ -58,26 +45,21 @@ export default function AddMovie({ onAdd }) {
       return;
     }
 
-    // Build the new movie object
     const newMovie = {
       id: generateId(),
       title: form.title.trim(),
       year: Number(form.year),
       rating: Number(form.rating),
       description: form.description.trim(),
-      // Fallback image if the user left the field blank
       image:
         form.image.trim() ||
         "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=400&q=80",
     };
 
-    // Propagate the new movie up to App (which saves to localStorage)
     onAdd(newMovie);
 
-    // Reset the form
     setForm(INITIAL_FORM);
 
-    // Redirect to the movie list
     navigate("/movies");
   }
 
@@ -192,7 +174,6 @@ export default function AddMovie({ onAdd }) {
   );
 }
 
-// Small reusable inline error message component
 function ErrorMsg({ msg }) {
   return (
     <span

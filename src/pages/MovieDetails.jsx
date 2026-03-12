@@ -1,20 +1,12 @@
-// pages/MovieDetails.jsx
-// Shows detailed information for a single movie.
-// The movie id is read from the URL via useParams.
-
 import { useParams, useNavigate } from "react-router-dom";
 
 export default function MovieDetails({ movies }) {
-  // useParams extracts dynamic segments from the current URL path
   const { id } = useParams();
 
-  // useNavigate gives us programmatic navigation (e.g. for the back button)
   const navigate = useNavigate();
 
-  // Find the movie whose id matches the URL parameter
   const movie = movies.find((m) => m.id === id);
 
-  // Guard – render a "not found" state if the id doesn't match any movie
   if (!movie) {
     return (
       <div className="page-wrapper">
