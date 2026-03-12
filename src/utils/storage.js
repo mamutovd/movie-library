@@ -2,6 +2,8 @@
 // Utility functions for reading and writing movies to localStorage
 
 const STORAGE_KEY = "movieLibrary_movies";
+const VERSION_KEY = "movieLibrary_version";
+const CURRENT_VERSION = "2";
 
 // Starter movies shown on first load (before any user data exists)
 export const starterMovies = [
@@ -12,7 +14,7 @@ export const starterMovies = [
     rating: 8.0,
     description:
       "A young blade runner's discovery of a long-buried secret leads him to track down former blade runner Rick Deckard, who's been missing for thirty years. A visually breathtaking neo-noir set in a dystopian future.",
-    image: "https://avatars.mds.yandex.net/i?id=47e942f5309d8ee5a788f350563858f760d46e27-10119783-images-thumbs&n=13",
+    image: "https://image.tmdb.org/t/p/w500/gajva2L0rPYkEWjzgFlBXCAVBE5.jpg",
   },
   {
     id: "2",
@@ -21,7 +23,7 @@ export const starterMovies = [
     rating: 8.6,
     description:
       "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival. Christopher Nolan's epic sci-fi masterwork that blends hard science with raw human emotion.",
-    image: "https://avatars.mds.yandex.net/i?id=1f7df7ff9815541849199ae1f191904314adf0ba-12691405-images-thumbs&n=13",
+    image: "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
   },
   {
     id: "3",
@@ -30,7 +32,7 @@ export const starterMovies = [
     rating: 8.1,
     description:
       "A writer encounters the owner of an aging European hotel between the wars and the concierge who became his mentor. Wes Anderson's most ornate and delightful confection.",
-    image: "https://avatars.mds.yandex.net/i?id=b01b38f4a3534da4c5a45dac058f24a7f9678b6a-5219031-images-thumbs&n=13",
+    image: "https://image.tmdb.org/t/p/w500/nX5XotM9yprCKarRz4AZaW9Ngko.jpg",
   },
   {
     id: "4",
@@ -39,7 +41,7 @@ export const starterMovies = [
     rating: 8.5,
     description:
       "Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan. Bong Joon-ho's genre-defying Palme d'Or winner.",
-    image: "https://avatars.mds.yandex.net/i?id=8c48524e6a4010f35672e21bf3ead76a9af2b261-5484959-images-thumbs&n=13",
+    image: "https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg",
   },
   {
     id: "5",
@@ -48,7 +50,7 @@ export const starterMovies = [
     rating: 8.0,
     description:
       "Feature adaptation of Frank Herbert's science fiction novel about the son of a noble family entrusted with the protection of the most valuable asset in the galaxy. Denis Villeneuve's awe-inspiring space opera.",
-    image: "https://avatars.mds.yandex.net/i?id=48c7051e51e9cda5c9d94809e17e66270a7f136d-10120629-images-thumbs&n=13",
+    image: "https://image.tmdb.org/t/p/w500/d5NXSklpcvzeBO6lIJFTgD0RCXT.jpg",
   },
   {
     id: "6",
@@ -57,20 +59,28 @@ export const starterMovies = [
     rating: 8.5,
     description:
       "A promising young drummer enrolls at a cut-throat music conservatory where his dreams of greatness are mentored by an instructor who will stop at nothing to realise a student's potential.",
-    image: "https://avatars.mds.yandex.net/i?id=e8f0aa7f9f0e2121ab1cf9c1e1bfff86c91fb762-5524638-images-thumbs&n=13",
+    image: "https://image.tmdb.org/t/p/w500/7fn624j5lj3xTme2SgiLCeuedmO.jpg",
   },
 ];
 
 /**
  * Load movies from localStorage.
- * If no data exists yet, seed with starter movies and persist them.
+ * If version is outdated or no data exists — seed with starter movies.
  * @returns {Array} array of movie objects
  */
 export function loadMovies() {
   try {
+    const version = localStorage.getItem(VERSION_KEY);
+
+    // Если версия устарела — сбросить данные и загрузить новые
+    if (version !== CURRENT_VERSION) {
+      localStorage.setItem(VERSION_KEY, CURRENT_VERSION);
+      saveMovies(starterMovies);
+      return starterMovies;
+    }
+
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) {
-      // First visit – persist starter data
       saveMovies(starterMovies);
       return starterMovies;
     }
