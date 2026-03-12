@@ -252,7 +252,7 @@ input, textarea, select {
 
 .movie-card-img-wrap {
   position: relative;
-  aspect-ratio: 3/2;
+  aspect-ratio: 2/3;
   overflow: hidden;
   background: var(--surface2);
 }
