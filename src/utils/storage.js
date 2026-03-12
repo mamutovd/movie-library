@@ -12,7 +12,7 @@ export const starterMovies = [
     rating: 8.0,
     description:
       "A young blade runner's discovery of a long-buried secret leads him to track down former blade runner Rick Deckard, who's been missing for thirty years. A visually breathtaking neo-noir set in a dystopian future.",
-    image: "https://yandex.ru/images/search?pos=1&from=tabbar&img_url=https%3A%2F%2Fi.pinimg.com%2F736x%2F74%2F8c%2F7a%2F748c7ae1c08f94a82f504b6c9574d81f.jpg&text=Blade+Runner+2049+photo+600x400&rpt=simage&lr=10309",
+    image: "https://avatars.mds.yandex.net/i?id=47e942f5309d8ee5a788f350563858f760d46e27-10119783-images-thumbs&n=13",
   },
   {
     id: "2",
@@ -21,7 +21,7 @@ export const starterMovies = [
     rating: 8.6,
     description:
       "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival. Christopher Nolan's epic sci-fi masterwork that blends hard science with raw human emotion.",
-    image: "https://yandex.ru/images/search?text=Interstellar+photo+600x400&pos=2&rpt=simage&img_url=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F7b%2Fa0%2Fd2%2F7ba0d2720b195ef6acd2955475e888ac.jpg&from=tabbar&lr=10309",
+    image: "https://avatars.mds.yandex.net/i?id=1f7df7ff9815541849199ae1f191904314adf0ba-12691405-images-thumbs&n=13",
   },
   {
     id: "3",
